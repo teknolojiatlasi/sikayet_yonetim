@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e465b675-0de9-475b-9c3e-0fd5b9cab3e6" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/sikayet-yonetim/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/sikayet-yonetim/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sikayet-yonetim/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/sikayet-yonetim/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sikayet-yonetim/src/App.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sikayet-yonetim/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/sikayet-yonetim/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sikayet-yonetim/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/sikayet-yonetim/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sikayet-yonetim/src/main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/sikayet-yonetim/src/main.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sikayet/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/sikayet/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sikayet/src/main/java/com/example/sikayet/SikayetApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sikayet/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/sikayet/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sikayet/src/test/java/com/example/sikayet/SikayetApplicationTests.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="3BtdwBq9cmq6qqkQXncYdsUZ37x" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.SikayetApplication.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/beshir/Desktop/SikayetYonetim"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="SikayetYonetim" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="SikayetYonetim" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e465b675-0de9-475b-9c3e-0fd5b9cab3e6" name="Changes" comment="" />
+      <created>1775312537160</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1775312537160</updated>
+    </task>
+    <servers />
+  </component>
+</project>
