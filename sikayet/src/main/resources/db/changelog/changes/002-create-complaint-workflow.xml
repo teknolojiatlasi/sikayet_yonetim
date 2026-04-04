@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.23.xsd">
+
+    <changeSet id="007-create-sikayet-turleri" author="codex">
+        <createTable tableName="sikayet_turleri">
+            <column name="id" type="BIGINT" autoIncrement="true"><constraints primaryKey="true" nullable="false"/></column>
+            <column name="kod" type="VARCHAR(50)"><constraints nullable="false" unique="true"/></column>
+            <column name="ad" type="VARCHAR(100)"><constraints nullable="false"/></column>
+            <column name="aciklama" type="VARCHAR(255)"/>
+            <column name="created_at" type="DATETIME"><constraints nullable="false"/></column>
+            <column name="updated_at" type="DATETIME"/>
+            <column name="created_by" type="VARCHAR(100)"/>
+            <column name="updated_by" type="VARCHAR(100)"/>
+            <column name="active" type="BIT" defaultValueBoolean="true"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="008-create-sikayet-durumlari" author="codex">
+        <createTable tableName="sikayet_durumlari">
+            <column name="id" type="BIGINT" autoIncrement="true"><constraints primaryKey="true" nullable="false"/></column>
+            <column name="kod" type="VARCHAR(50)"><constraints nullable="false" unique="true"/></column>
+            <column name="ad" type="VARCHAR(100)"><constraints nullable="false"/></column>
+            <column name="final_durum" type="BIT" defaultValueBoolean="false"><constraints nullable="false"/></column>
+            <column name="created_at" type="DATETIME"><constraints nullable="false"/></column>
+            <column name="updated_at" type="DATETIME"/>
+            <column name="created_by" type="VARCHAR(100)"/>
+            <column name="updated_by" type="VARCHAR(100)"/>
+            <column name="active" type="BIT" defaultValueBoolean="true"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="009-create-sikayetler" author="codex">
+        <createTable tableName="sikayetler">
+            <column name="id" type="BIGINT" autoIncrement="true"><constraints primaryKey="true" nullable="false"/></column>
+            <column name="sikayet_no" type="VARCHAR(50)"><constraints nullable="false" unique="true"/></column>
+            <column name="kisi_id" type="BIGINT"><constraints nullable="false"/></column>
+            <column name="sikayet_turu_id" type="BIGINT"><constraints nullable="false"/></column>
+            <column name="sikayet_durumu_id" type="BIGINT"><constraints nullable="false"/></column>
+            <column name="konu" type="VARCHAR(255)"><constraints nullable="false"/></column>
+            <column name="aciklama" type="TEXT"><constraints nullable="false"/></column>
+            <column name="oncelik" type="VARCHAR(50)"/>
+            <column name="created_at" type="DATETIME"><constraints nullable="false"/></column>
+            <column name="updated_at" type="DATETIME"/>
+            <column name="created_by" type="VARCHAR(100)"/>
+            <column name="updated_by" type="VARCHAR(100)"/>
+            <column name="active" type="BIT" defaultValueBoolean="true"><constraints nullable="false"/></column>
+        </createTable>
+        <createIndex tableName="sikayetler" indexName="idx_sikayetler_sikayet_no"><column name="sikayet_no"/></createIndex>
+        <createIndex tableName="sikayetler" indexName="idx_sikayetler_kisi_id"><column name="kisi_id"/></createIndex>
+        <createIndex tableName="sikayetler" indexName="idx_sikayetler_tur_id"><column name="sikayet_turu_id"/></createIndex>
+        <createIndex tableName="sikayetler" indexName="idx_sikayetler_durum_id"><column name="sikayet_durumu_id"/></createIndex>
+        <addForeignKeyConstraint baseTableName="sikayetler" baseColumnNames="kisi_id" referencedTableName="kisiler" referencedColumnNames="id" constraintName="fk_sikayetler_kisi"/>
+        <addForeignKeyConstraint baseTableName="sikayetler" baseColumnNames="sikayet_turu_id" referencedTableName="sikayet_turleri" referencedColumnNames="id" constraintName="fk_sikayetler_tur"/>
+        <addForeignKeyConstraint baseTableName="sikayetler" baseColumnNames="sikayet_durumu_id" referencedTableName="sikayet_durumlari" referencedColumnNames="id" constraintName="fk_sikayetler_durum"/>
+    </changeSet>
+
+    <changeSet id="010-create-sikayet-dosyalari" author="codex">
+        <createTable tableName="sikayet_dosyalari">
+            <column name="id" type="BIGINT" autoIncrement="true"><constraints primaryKey="true" nullable="false"/></column>
+            <column name="sikayet_id" type="BIGINT"><constraints nullable="false"/></column>
+            <column name="orijinal_dosya_adi" type="VARCHAR(255)"><constraints nullable="false"/></column>
+            <column name="sistem_dosya_adi" type="VARCHAR(255)"><constraints nullable="false"/></column>
+            <column name="dosya_yolu" type="VARCHAR(500)"><constraints nullable="false"/></column>
+            <column name="mime_type" type="VARCHAR(150)"><constraints nullable="false"/></column>
+            <column name="dosya_boyutu" type="BIGINT"><constraints nullable="false"/></column>
+            <column name="yukleyen_kullanici_id" type="BIGINT"/>
+            <column name="created_at" type="DATETIME"><constraints nullable="false"/></column>
+            <column name="updated_at" type="DATETIME"/>
+            <column name="created_by" type="VARCHAR(100)"/>
+            <column name="updated_by" type="VARCHAR(100)"/>
+            <column name="active" type="BIT" defaultValueBoolean="true"><constraints nullable="false"/></column>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="sikayet_dosyalari" baseColumnNames="sikayet_id" referencedTableName="sikayetler" referencedColumnNames="id" constraintName="fk_sikayet_dosyalari_sikayet"/>
+        <addForeignKeyConstraint baseTableName="sikayet_dosyalari" baseColumnNames="yukleyen_kullanici_id" referencedTableName="kullanicilar" referencedColumnNames="id" constraintName="fk_sikayet_dosyalari_kullanici"/>
+    </changeSet>
+
+    <changeSet id="011-create-sikayet-atamalari" author="codex">
+        <createTable tableName="sikayet_atamalari">
+            <column name="id" type="BIGINT" autoIncrement="true"><constraints primaryKey="true" nullable="false"/></column>
+            <column name="sikayet_id" type="BIGINT"><constraints nullable="false"/></column>
+            <column name="atanan_kullanici_id" type="BIGINT"><constraints nullable="false"/></column>
+            <column name="atanan_birim_id" type="BIGINT"/>
+            <column name="atama_tarihi" type="DATETIME"><constraints nullable="false"/></column>
+            <column name="aktif" type="BIT" defaultValueBoolean="true"><constraints nullable="false"/></column>
+            <column name="created_at" type="DATETIME"><constraints nullable="false"/></column>
+            <column name="updated_at" type="DATETIME"/>
+            <column name="created_by" type="VARCHAR(100)"/>
+            <column name="updated_by" type="VARCHAR(100)"/>
+            <column name="active" type="BIT" defaultValueBoolean="true"><constraints nullable="false"/></column>
+        </createTable>
+        <createIndex tableName="sikayet_atamalari" indexName="idx_sikayet_atamalari_atanan_kullanici_id"><column name="atanan_kullanici_id"/></createIndex>
+        <addForeignKeyConstraint baseTableName="sikayet_atamalari" baseColumnNames="sikayet_id" referencedTableName="sikayetler" referencedColumnNames="id" constraintName="fk_sikayet_atamalari_sikayet"/>
+        <addForeignKeyConstraint baseTableName="sikayet_atamalari" baseColumnNames="atanan_kullanici_id" referencedTableName="kullanicilar" referencedColumnNames="id" constraintName="fk_sikayet_atamalari_atanan_kullanici"/>
+        <addForeignKeyConstraint baseTableName="sikayet_atamalari" baseColumnNames="atanan_birim_id" referencedTableName="kullanicilar" referencedColumnNames="id" constraintName="fk_sikayet_atamalari_atayan_kullanici"/>
+    </changeSet>
+
+    <changeSet id="012-create-sikayet-durum-gecmisi" author="codex">
+        <createTable tableName="sikayet_durum_gecmisi">
+            <column name="id" type="BIGINT" autoIncrement="true"><constraints primaryKey="true" nullable="false"/></column>
+            <column name="sikayet_id" type="BIGINT"><constraints nullable="false"/></column>
+            <column name="eski_durum_id" type="BIGINT"/>
+            <column name="yeni_durum_id" type="BIGINT"><constraints nullable="false"/></column>
+            <column name="degistiren_kullanici_id" type="BIGINT"/>
+            <column name="degisim_tarihi" type="DATETIME"><constraints nullable="false"/></column>
+            <column name="aciklama" type="VARCHAR(255)"/>
+            <column name="created_at" type="DATETIME"><constraints nullable="false"/></column>
+            <column name="updated_at" type="DATETIME"/>
+            <column name="created_by" type="VARCHAR(100)"/>
+            <column name="updated_by" type="VARCHAR(100)"/>
+            <column name="active" type="BIT" defaultValueBoolean="true"><constraints nullable="false"/></column>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="sikayet_durum_gecmisi" baseColumnNames="sikayet_id" referencedTableName="sikayetler" referencedColumnNames="id" constraintName="fk_sikayet_durum_gecmisi_sikayet"/>
+        <addForeignKeyConstraint baseTableName="sikayet_durum_gecmisi" baseColumnNames="eski_durum_id" referencedTableName="sikayet_durumlari" referencedColumnNames="id" constraintName="fk_sikayet_durum_gecmisi_eski_durum"/>
+        <addForeignKeyConstraint baseTableName="sikayet_durum_gecmisi" baseColumnNames="yeni_durum_id" referencedTableName="sikayet_durumlari" referencedColumnNames="id" constraintName="fk_sikayet_durum_gecmisi_yeni_durum"/>
+        <addForeignKeyConstraint baseTableName="sikayet_durum_gecmisi" baseColumnNames="degistiren_kullanici_id" referencedTableName="kullanicilar" referencedColumnNames="id" constraintName="fk_sikayet_durum_gecmisi_kullanici"/>
+    </changeSet>
+
+    <changeSet id="013-create-sikayet-loglari" author="codex">
+        <createTable tableName="sikayet_loglari">
+            <column name="id" type="BIGINT" autoIncrement="true"><constraints primaryKey="true" nullable="false"/></column>
+            <column name="sikayet_id" type="BIGINT"><constraints nullable="false"/></column>
+            <column name="islem_tipi" type="VARCHAR(100)"><constraints nullable="false"/></column>
+            <column name="mesaj" type="VARCHAR(500)"><constraints nullable="false"/></column>
+            <column name="kullanici_id" type="BIGINT"/>
+            <column name="islem_tarihi" type="DATETIME"><constraints nullable="false"/></column>
+            <column name="created_at" type="DATETIME"><constraints nullable="false"/></column>
+            <column name="updated_at" type="DATETIME"/>
+            <column name="created_by" type="VARCHAR(100)"/>
+            <column name="updated_by" type="VARCHAR(100)"/>
+            <column name="active" type="BIT" defaultValueBoolean="true"><constraints nullable="false"/></column>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="sikayet_loglari" baseColumnNames="sikayet_id" referencedTableName="sikayetler" referencedColumnNames="id" constraintName="fk_sikayet_loglari_sikayet"/>
+        <addForeignKeyConstraint baseTableName="sikayet_loglari" baseColumnNames="kullanici_id" referencedTableName="kullanicilar" referencedColumnNames="id" constraintName="fk_sikayet_loglari_kullanici"/>
+    </changeSet>
+
+    <changeSet id="014-create-sikayet-sonuclari" author="codex">
+        <createTable tableName="sikayet_sonuclari">
+            <column name="id" type="BIGINT" autoIncrement="true"><constraints primaryKey="true" nullable="false"/></column>
+            <column name="sikayet_id" type="BIGINT"><constraints nullable="false" unique="true"/></column>
+            <column name="sonuc_metin" type="TEXT"><constraints nullable="false"/></column>
+            <column name="sonuclandiran_kullanici_id" type="BIGINT"/>
+            <column name="sonuclanma_tarihi" type="DATETIME"><constraints nullable="false"/></column>
+            <column name="created_at" type="DATETIME"><constraints nullable="false"/></column>
+            <column name="updated_at" type="DATETIME"/>
+            <column name="created_by" type="VARCHAR(100)"/>
+            <column name="updated_by" type="VARCHAR(100)"/>
+            <column name="active" type="BIT" defaultValueBoolean="true"><constraints nullable="false"/></column>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="sikayet_sonuclari" baseColumnNames="sikayet_id" referencedTableName="sikayetler" referencedColumnNames="id" constraintName="fk_sikayet_sonuclari_sikayet"/>
+        <addForeignKeyConstraint baseTableName="sikayet_sonuclari" baseColumnNames="sonuclandiran_kullanici_id" referencedTableName="kullanicilar" referencedColumnNames="id" constraintName="fk_sikayet_sonuclari_kullanici"/>
+    </changeSet>
+</databaseChangeLog>

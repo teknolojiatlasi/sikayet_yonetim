@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.23.xsd">
+
+    <changeSet id="100-seed-roller" author="codex">
+        <insert tableName="roller">
+            <column name="id" valueNumeric="1"/>
+            <column name="kod" value="ROLE_ADMIN"/>
+            <column name="ad" value="Admin"/>
+            <column name="created_at" valueDate="2026-04-04T00:00:00"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+        <insert tableName="roller">
+            <column name="id" valueNumeric="2"/>
+            <column name="kod" value="ROLE_YONETICI"/>
+            <column name="ad" value="Yonetici"/>
+            <column name="created_at" valueDate="2026-04-04T00:00:00"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+        <insert tableName="roller">
+            <column name="id" valueNumeric="3"/>
+            <column name="kod" value="ROLE_INCELEYEN"/>
+            <column name="ad" value="Inceleyen"/>
+            <column name="created_at" valueDate="2026-04-04T00:00:00"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="101-seed-yetkiler" author="codex">
+        <insert tableName="yetkiler"><column name="id" valueNumeric="1"/><column name="kod" value="USER_VIEW"/><column name="created_at" valueDate="2026-04-04T00:00:00"/><column name="active" valueBoolean="true"/></insert>
+        <insert tableName="yetkiler"><column name="id" valueNumeric="2"/><column name="kod" value="USER_CREATE"/><column name="created_at" valueDate="2026-04-04T00:00:00"/><column name="active" valueBoolean="true"/></insert>
+        <insert tableName="yetkiler"><column name="id" valueNumeric="3"/><column name="kod" value="SIKAYET_VIEW"/><column name="created_at" valueDate="2026-04-04T00:00:00"/><column name="active" valueBoolean="true"/></insert>
+        <insert tableName="yetkiler"><column name="id" valueNumeric="4"/><column name="kod" value="SIKAYET_CREATE"/><column name="created_at" valueDate="2026-04-04T00:00:00"/><column name="active" valueBoolean="true"/></insert>
+        <insert tableName="yetkiler"><column name="id" valueNumeric="5"/><column name="kod" value="SIKAYET_ASSIGN"/><column name="created_at" valueDate="2026-04-04T00:00:00"/><column name="active" valueBoolean="true"/></insert>
+        <insert tableName="yetkiler"><column name="id" valueNumeric="6"/><column name="kod" value="SIKAYET_STATUS_CHANGE"/><column name="created_at" valueDate="2026-04-04T00:00:00"/><column name="active" valueBoolean="true"/></insert>
+        <insert tableName="yetkiler"><column name="id" valueNumeric="7"/><column name="kod" value="SIKAYET_RESULT_CREATE"/><column name="created_at" valueDate="2026-04-04T00:00:00"/><column name="active" valueBoolean="true"/></insert>
+        <insert tableName="yetkiler"><column name="id" valueNumeric="8"/><column name="kod" value="DOSYA_UPLOAD"/><column name="created_at" valueDate="2026-04-04T00:00:00"/><column name="active" valueBoolean="true"/></insert>
+        <insert tableName="yetkiler"><column name="id" valueNumeric="9"/><column name="kod" value="LOG_VIEW"/><column name="created_at" valueDate="2026-04-04T00:00:00"/><column name="active" valueBoolean="true"/></insert>
+    </changeSet>
+
+    <changeSet id="102-seed-rol-yetki" author="codex">
+        <insert tableName="rol_yetkileri"><column name="rol_id" valueNumeric="1"/><column name="yetki_id" valueNumeric="1"/><column name="created_at" valueDate="2026-04-04T00:00:00"/><column name="active" valueBoolean="true"/></insert>
+        <insert tableName="rol_yetkileri"><column name="rol_id" valueNumeric="1"/><column name="yetki_id" valueNumeric="2"/><column name="created_at" valueDate="2026-04-04T00:00:00"/><column name="active" valueBoolean="true"/></insert>
+        <insert tableName="rol_yetkileri"><column name="rol_id" valueNumeric="1"/><column name="yetki_id" valueNumeric="3"/><column name="created_at" valueDate="2026-04-04T00:00:00"/><column name="active" valueBoolean="true"/></insert>
+        <insert tableName="rol_yetkileri"><column name="rol_id" valueNumeric="1"/><column name="yetki_id" valueNumeric="4"/><column name="created_at" valueDate="2026-04-04T00:00:00"/><column name="active" valueBoolean="true"/></insert>
+        <insert tableName="rol_yetkileri"><column name="rol_id" valueNumeric="1"/><column name="yetki_id" valueNumeric="5"/><column name="created_at" valueDate="2026-04-04T00:00:00"/><column name="active" valueBoolean="true"/></insert>
+        <insert tableName="rol_yetkileri"><column name="rol_id" valueNumeric="1"/><column name="yetki_id" valueNumeric="6"/><column name="created_at" valueDate="2026-04-04T00:00:00"/><column name="active" valueBoolean="true"/></insert>
+        <insert tableName="rol_yetkileri"><column name="rol_id" valueNumeric="1"/><column name="yetki_id" valueNumeric="7"/><column name="created_at" valueDate="2026-04-04T00:00:00"/><column name="active" valueBoolean="true"/></insert>
+        <insert tableName="rol_yetkileri"><column name="rol_id" valueNumeric="1"/><column name="yetki_id" valueNumeric="8"/><column name="created_at" valueDate="2026-04-04T00:00:00"/><column name="active" valueBoolean="true"/></insert>
+        <insert tableName="rol_yetkileri"><column name="rol_id" valueNumeric="1"/><column name="yetki_id" valueNumeric="9"/><column name="created_at" valueDate="2026-04-04T00:00:00"/><column name="active" valueBoolean="true"/></insert>
+    </changeSet>
+
+    <changeSet id="103-seed-admin" author="codex">
+        <insert tableName="kullanicilar">
+            <column name="id" valueNumeric="1"/>
+            <column name="kullanici_adi" value="admin"/>
+            <column name="email" value="admin@sikayet.local"/>
+            <column name="sifre_hash" value="$2a$10$h0W9eK9h5mUuTK1Z4qVxwecWS9Vyuk3F7S3w7Dnk3a1JpN96CB2A6"/>
+            <column name="ad" value="Sistem"/>
+            <column name="soyad" value="Yoneticisi"/>
+            <column name="created_at" valueDate="2026-04-04T00:00:00"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+        <insert tableName="kullanici_rolleri">
+            <column name="kullanici_id" valueNumeric="1"/>
+            <column name="rol_id" valueNumeric="1"/>
+            <column name="created_at" valueDate="2026-04-04T00:00:00"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="104-seed-lookup-data" author="codex">
+        <insert tableName="sikayet_durumlari"><column name="id" valueNumeric="1"/><column name="kod" value="YENI"/><column name="ad" value="Yeni"/><column name="final_durum" valueBoolean="false"/><column name="created_at" valueDate="2026-04-04T00:00:00"/><column name="active" valueBoolean="true"/></insert>
+        <insert tableName="sikayet_durumlari"><column name="id" valueNumeric="2"/><column name="kod" value="ATANDI"/><column name="ad" value="Atandi"/><column name="final_durum" valueBoolean="false"/><column name="created_at" valueDate="2026-04-04T00:00:00"/><column name="active" valueBoolean="true"/></insert>
+        <insert tableName="sikayet_durumlari"><column name="id" valueNumeric="3"/><column name="kod" value="INCELEMEDE"/><column name="ad" value="Incelemede"/><column name="final_durum" valueBoolean="false"/><column name="created_at" valueDate="2026-04-04T00:00:00"/><column name="active" valueBoolean="true"/></insert>
+        <insert tableName="sikayet_durumlari"><column name="id" valueNumeric="4"/><column name="kod" value="EK_BILGI_BEKLENIYOR"/><column name="ad" value="Ek Bilgi Bekleniyor"/><column name="final_durum" valueBoolean="false"/><column name="created_at" valueDate="2026-04-04T00:00:00"/><column name="active" valueBoolean="true"/></insert>
+        <insert tableName="sikayet_durumlari"><column name="id" valueNumeric="5"/><column name="kod" value="SONUCLANDI"/><column name="ad" value="Sonuclandi"/><column name="final_durum" valueBoolean="true"/><column name="created_at" valueDate="2026-04-04T00:00:00"/><column name="active" valueBoolean="true"/></insert>
+        <insert tableName="sikayet_durumlari"><column name="id" valueNumeric="6"/><column name="kod" value="KAPATILDI"/><column name="ad" value="Kapatildi"/><column name="final_durum" valueBoolean="true"/><column name="created_at" valueDate="2026-04-04T00:00:00"/><column name="active" valueBoolean="true"/></insert>
+
+        <insert tableName="sikayet_turleri"><column name="id" valueNumeric="1"/><column name="kod" value="HIZMET"/><column name="ad" value="Hizmet Sikayeti"/><column name="created_at" valueDate="2026-04-04T00:00:00"/><column name="active" valueBoolean="true"/></insert>
+        <insert tableName="sikayet_turleri"><column name="id" valueNumeric="2"/><column name="kod" value="PERSONEL"/><column name="ad" value="Personel Sikayeti"/><column name="created_at" valueDate="2026-04-04T00:00:00"/><column name="active" valueBoolean="true"/></insert>
+        <insert tableName="sikayet_turleri"><column name="id" valueNumeric="3"/><column name="kod" value="TEKNIK"/><column name="ad" value="Teknik Problem"/><column name="created_at" valueDate="2026-04-04T00:00:00"/><column name="active" valueBoolean="true"/></insert>
+    </changeSet>
+</databaseChangeLog>

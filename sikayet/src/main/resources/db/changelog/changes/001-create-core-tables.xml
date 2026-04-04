@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.23.xsd">
+
+    <changeSet id="001-create-kullanicilar" author="codex">
+        <createTable tableName="kullanicilar">
+            <column name="id" type="BIGINT" autoIncrement="true"><constraints primaryKey="true" nullable="false"/></column>
+            <column name="kullanici_adi" type="VARCHAR(100)"><constraints nullable="false" unique="true"/></column>
+            <column name="email" type="VARCHAR(150)"><constraints nullable="false" unique="true"/></column>
+            <column name="sifre_hash" type="VARCHAR(255)"><constraints nullable="false"/></column>
+            <column name="ad" type="VARCHAR(100)"><constraints nullable="false"/></column>
+            <column name="soyad" type="VARCHAR(100)"><constraints nullable="false"/></column>
+            <column name="created_at" type="DATETIME"><constraints nullable="false"/></column>
+            <column name="updated_at" type="DATETIME"/>
+            <column name="created_by" type="VARCHAR(100)"/>
+            <column name="updated_by" type="VARCHAR(100)"/>
+            <column name="active" type="BIT" defaultValueBoolean="true"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="002-create-kisiler" author="codex">
+        <createTable tableName="kisiler">
+            <column name="id" type="BIGINT" autoIncrement="true"><constraints primaryKey="true" nullable="false"/></column>
+            <column name="ad" type="VARCHAR(100)"><constraints nullable="false"/></column>
+            <column name="soyad" type="VARCHAR(100)"><constraints nullable="false"/></column>
+            <column name="telefon" type="VARCHAR(20)"/>
+            <column name="email" type="VARCHAR(150)"/>
+            <column name="tc_kimlik_no" type="VARCHAR(20)"/>
+            <column name="created_at" type="DATETIME"><constraints nullable="false"/></column>
+            <column name="updated_at" type="DATETIME"/>
+            <column name="created_by" type="VARCHAR(100)"/>
+            <column name="updated_by" type="VARCHAR(100)"/>
+            <column name="active" type="BIT" defaultValueBoolean="true"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="003-create-roller" author="codex">
+        <createTable tableName="roller">
+            <column name="id" type="BIGINT" autoIncrement="true"><constraints primaryKey="true" nullable="false"/></column>
+            <column name="kod" type="VARCHAR(100)"><constraints nullable="false" unique="true"/></column>
+            <column name="ad" type="VARCHAR(100)"><constraints nullable="false"/></column>
+            <column name="created_at" type="DATETIME"><constraints nullable="false"/></column>
+            <column name="updated_at" type="DATETIME"/>
+            <column name="created_by" type="VARCHAR(100)"/>
+            <column name="updated_by" type="VARCHAR(100)"/>
+            <column name="active" type="BIT" defaultValueBoolean="true"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="004-create-yetkiler" author="codex">
+        <createTable tableName="yetkiler">
+            <column name="id" type="BIGINT" autoIncrement="true"><constraints primaryKey="true" nullable="false"/></column>
+            <column name="kod" type="VARCHAR(100)"><constraints nullable="false" unique="true"/></column>
+            <column name="aciklama" type="VARCHAR(255)"/>
+            <column name="created_at" type="DATETIME"><constraints nullable="false"/></column>
+            <column name="updated_at" type="DATETIME"/>
+            <column name="created_by" type="VARCHAR(100)"/>
+            <column name="updated_by" type="VARCHAR(100)"/>
+            <column name="active" type="BIT" defaultValueBoolean="true"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="005-create-kullanici-rolleri" author="codex">
+        <createTable tableName="kullanici_rolleri">
+            <column name="id" type="BIGINT" autoIncrement="true"><constraints primaryKey="true" nullable="false"/></column>
+            <column name="kullanici_id" type="BIGINT"><constraints nullable="false"/></column>
+            <column name="rol_id" type="BIGINT"><constraints nullable="false"/></column>
+            <column name="created_at" type="DATETIME"><constraints nullable="false"/></column>
+            <column name="updated_at" type="DATETIME"/>
+            <column name="created_by" type="VARCHAR(100)"/>
+            <column name="updated_by" type="VARCHAR(100)"/>
+            <column name="active" type="BIT" defaultValueBoolean="true"><constraints nullable="false"/></column>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="kullanici_rolleri" baseColumnNames="kullanici_id" referencedTableName="kullanicilar" referencedColumnNames="id" constraintName="fk_kullanici_rolleri_kullanici"/>
+        <addForeignKeyConstraint baseTableName="kullanici_rolleri" baseColumnNames="rol_id" referencedTableName="roller" referencedColumnNames="id" constraintName="fk_kullanici_rolleri_rol"/>
+    </changeSet>
+
+    <changeSet id="006-create-rol-yetkileri" author="codex">
+        <createTable tableName="rol_yetkileri">
+            <column name="id" type="BIGINT" autoIncrement="true"><constraints primaryKey="true" nullable="false"/></column>
+            <column name="rol_id" type="BIGINT"><constraints nullable="false"/></column>
+            <column name="yetki_id" type="BIGINT"><constraints nullable="false"/></column>
+            <column name="created_at" type="DATETIME"><constraints nullable="false"/></column>
+            <column name="updated_at" type="DATETIME"/>
+            <column name="created_by" type="VARCHAR(100)"/>
+            <column name="updated_by" type="VARCHAR(100)"/>
+            <column name="active" type="BIT" defaultValueBoolean="true"><constraints nullable="false"/></column>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="rol_yetkileri" baseColumnNames="rol_id" referencedTableName="roller" referencedColumnNames="id" constraintName="fk_rol_yetkileri_rol"/>
+        <addForeignKeyConstraint baseTableName="rol_yetkileri" baseColumnNames="yetki_id" referencedTableName="yetkiler" referencedColumnNames="id" constraintName="fk_rol_yetkileri_yetki"/>
+    </changeSet>
+</databaseChangeLog>
