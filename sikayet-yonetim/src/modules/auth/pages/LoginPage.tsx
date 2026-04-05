@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import { login as loginApi } from '../../../api/authApi'
@@ -11,6 +12,7 @@ type FormValues = {
 export function LoginPage() {
   const navigate = useNavigate()
   const { login } = useAuth()
+  const [loginError, setLoginError] = useState<string | null>(null)
   const {
     register,
     handleSubmit,
@@ -20,13 +22,13 @@ export function LoginPage() {
   })
 
   const onSubmit = async (values: FormValues) => {
+    setLoginError(null)
     try {
       const response = await loginApi(values)
       login(response.accessToken, response.username)
       navigate('/')
-    } catch {
-      login('mock-jwt-token', values.username)
-      navigate('/')
+    } catch (error) {
+      setLoginError('Kullanici adi veya sifre hatali.')
     }
   }
 
@@ -60,6 +62,7 @@ export function LoginPage() {
             <button className="button-primary" type="submit" disabled={isSubmitting}>
               {isSubmitting ? 'Giris yapiliyor...' : 'Panele gir'}
             </button>
+            {loginError && <div className="error-text" style={{ marginTop: 16 }}>{loginError}</div>}
           </form>
         </div>
       </div>

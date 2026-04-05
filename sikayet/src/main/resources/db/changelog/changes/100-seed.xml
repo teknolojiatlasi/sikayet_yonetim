@@ -35,7 +35,6 @@
         </insert>
     </changeSet>
 
-
     <!-- ===================== YETKİLER ===================== -->
     <changeSet id="seed-yetkiler" author="codex">
         <preConditions onFail="MARK_RAN">
@@ -44,17 +43,52 @@
             </sqlCheck>
         </preConditions>
 
-        <insert tableName="yetkiler"><column name="kod" value="USER_VIEW"/><column name="created_at" valueDate="2026-04-04T00:00:00"/><column name="active" valueBoolean="true"/></insert>
-        <insert tableName="yetkiler"><column name="kod" value="USER_CREATE"/><column name="created_at" valueDate="2026-04-04T00:00:00"/><column name="active" valueBoolean="true"/></insert>
-        <insert tableName="yetkiler"><column name="kod" value="SIKAYET_VIEW"/><column name="created_at" valueDate="2026-04-04T00:00:00"/><column name="active" valueBoolean="true"/></insert>
-        <insert tableName="yetkiler"><column name="kod" value="SIKAYET_CREATE"/><column name="created_at" valueDate="2026-04-04T00:00:00"/><column name="active" valueBoolean="true"/></insert>
-        <insert tableName="yetkiler"><column name="kod" value="SIKAYET_ASSIGN"/><column name="created_at" valueDate="2026-04-04T00:00:00"/><column name="active" valueBoolean="true"/></insert>
-        <insert tableName="yetkiler"><column name="kod" value="SIKAYET_STATUS_CHANGE"/><column name="created_at" valueDate="2026-04-04T00:00:00"/><column name="active" valueBoolean="true"/></insert>
-        <insert tableName="yetkiler"><column name="kod" value="SIKAYET_RESULT_CREATE"/><column name="created_at" valueDate="2026-04-04T00:00:00"/><column name="active" valueBoolean="true"/></insert>
-        <insert tableName="yetkiler"><column name="kod" value="DOSYA_UPLOAD"/><column name="created_at" valueDate="2026-04-04T00:00:00"/><column name="active" valueBoolean="true"/></insert>
-        <insert tableName="yetkiler"><column name="kod" value="LOG_VIEW"/><column name="created_at" valueDate="2026-04-04T00:00:00"/><column name="active" valueBoolean="true"/></insert>
+        <insert tableName="yetkiler">
+            <column name="kod" value="USER_VIEW"/>
+            <column name="created_at" valueDate="2026-04-04T00:00:00"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+        <insert tableName="yetkiler">
+            <column name="kod" value="USER_CREATE"/>
+            <column name="created_at" valueDate="2026-04-04T00:00:00"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+        <insert tableName="yetkiler">
+            <column name="kod" value="SIKAYET_VIEW"/>
+            <column name="created_at" valueDate="2026-04-04T00:00:00"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+        <insert tableName="yetkiler">
+            <column name="kod" value="SIKAYET_CREATE"/>
+            <column name="created_at" valueDate="2026-04-04T00:00:00"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+        <insert tableName="yetkiler">
+            <column name="kod" value="SIKAYET_ASSIGN"/>
+            <column name="created_at" valueDate="2026-04-04T00:00:00"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+        <insert tableName="yetkiler">
+            <column name="kod" value="SIKAYET_STATUS_CHANGE"/>
+            <column name="created_at" valueDate="2026-04-04T00:00:00"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+        <insert tableName="yetkiler">
+            <column name="kod" value="SIKAYET_RESULT_CREATE"/>
+            <column name="created_at" valueDate="2026-04-04T00:00:00"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+        <insert tableName="yetkiler">
+            <column name="kod" value="DOSYA_UPLOAD"/>
+            <column name="created_at" valueDate="2026-04-04T00:00:00"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+        <insert tableName="yetkiler">
+            <column name="kod" value="LOG_VIEW"/>
+            <column name="created_at" valueDate="2026-04-04T00:00:00"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
     </changeSet>
-
 
     <!-- ===================== ADMIN USER ===================== -->
     <changeSet id="seed-admin-user" author="codex">
@@ -75,7 +109,6 @@
         </insert>
     </changeSet>
 
-
     <!-- ===================== DURUMLAR ===================== -->
     <changeSet id="seed-durumlar" author="codex">
         <preConditions onFail="MARK_RAN">
@@ -84,14 +117,49 @@
             </sqlCheck>
         </preConditions>
 
-        <insert tableName="sikayet_durumlari"><column name="kod" value="YENI"/><column name="ad" value="Yeni"/><column name="final_durum" valueBoolean="false"/><column name="created_at" valueDate="2026-04-04T00:00:00"/><column name="active" valueBoolean="true"/></insert>
-        <insert tableName="sikayet_durumlari"><column name="kod" value="ATANDI"/><column name="ad" value="Atandi"/><column name="final_durum" valueBoolean="false"/><column name="created_at" valueDate="2026-04-04T00:00:00"/><column name="active" valueBoolean="true"/></insert>
-        <insert tableName="sikayet_durumlari"><column name="kod" value="INCELEMEDE"/><column name="ad" value="Incelemede"/><column name="final_durum" valueBoolean="false"/><column name="created_at" valueDate="2026-04-04T00:00:00"/><column name="active" valueBoolean="true"/></insert>
-        <insert tableName="sikayet_durumlari"><column name="kod" value="EK_BILGI_BEKLENIYOR"/><column name="ad" value="Ek Bilgi Bekleniyor"/><column name="final_durum" valueBoolean="false"/><column name="created_at" valueDate="2026-04-04T00:00:00"/><column name="active" valueBoolean="true"/></insert>
-        <insert tableName="sikayet_durumlari"><column name="kod" value="SONUCLANDI"/><column name="ad" value="Sonuclandi"/><column name="final_durum" valueBoolean="true"/><column name="created_at" valueDate="2026-04-04T00:00:00"/><column name="active" valueBoolean="true"/></insert>
-        <insert tableName="sikayet_durumlari"><column name="kod" value="KAPATILDI"/><column name="ad" value="Kapatildi"/><column name="final_durum" valueBoolean="true"/><column name="created_at" valueDate="2026-04-04T00:00:00"/><column name="active" valueBoolean="true"/></insert>
+        <insert tableName="sikayet_durumlari">
+            <column name="kod" value="YENI"/>
+            <column name="ad" value="Yeni"/>
+            <column name="final_durum" valueBoolean="false"/>
+            <column name="created_at" valueDate="2026-04-04T00:00:00"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+        <insert tableName="sikayet_durumlari">
+            <column name="kod" value="ATANDI"/>
+            <column name="ad" value="Atandi"/>
+            <column name="final_durum" valueBoolean="false"/>
+            <column name="created_at" valueDate="2026-04-04T00:00:00"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+        <insert tableName="sikayet_durumlari">
+            <column name="kod" value="INCELEMEDE"/>
+            <column name="ad" value="Incelemede"/>
+            <column name="final_durum" valueBoolean="false"/>
+            <column name="created_at" valueDate="2026-04-04T00:00:00"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+        <insert tableName="sikayet_durumlari">
+            <column name="kod" value="EK_BILGI_BEKLENIYOR"/>
+            <column name="ad" value="Ek Bilgi Bekleniyor"/>
+            <column name="final_durum" valueBoolean="false"/>
+            <column name="created_at" valueDate="2026-04-04T00:00:00"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+        <insert tableName="sikayet_durumlari">
+            <column name="kod" value="SONUCLANDI"/>
+            <column name="ad" value="Sonuclandi"/>
+            <column name="final_durum" valueBoolean="true"/>
+            <column name="created_at" valueDate="2026-04-04T00:00:00"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+        <insert tableName="sikayet_durumlari">
+            <column name="kod" value="KAPATILDI"/>
+            <column name="ad" value="Kapatildi"/>
+            <column name="final_durum" valueBoolean="true"/>
+            <column name="created_at" valueDate="2026-04-04T00:00:00"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
     </changeSet>
-
 
     <!-- ===================== TÜRLER ===================== -->
     <changeSet id="seed-turler" author="codex">
@@ -101,8 +169,277 @@
             </sqlCheck>
         </preConditions>
 
-        <insert tableName="sikayet_turleri"><column name="kod" value="HIZMET"/><column name="ad" value="Hizmet Sikayeti"/><column name="created_at" valueDate="2026-04-04T00:00:00"/><column name="active" valueBoolean="true"/></insert>
-        <insert tableName="sikayet_turleri"><column name="kod" value="PERSONEL"/><column name="ad" value="Personel Sikayeti"/><column name="created_at" valueDate="2026-04-04T00:00:00"/><column name="active" valueBoolean="true"/></insert>
+        <insert tableName="sikayet_turleri">
+            <column name="kod" value="HIZMET"/>
+            <column name="ad" value="Hizmet Sikayeti"/>
+            <column name="created_at" valueDate="2026-04-04T00:00:00"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+        <insert tableName="sikayet_turleri">
+            <column name="kod" value="PERSONEL"/>
+            <column name="ad" value="Personel Sikayeti"/>
+            <column name="created_at" valueDate="2026-04-04T00:00:00"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+    </changeSet>
+
+    <!-- ===================== EK KULLANICILAR ===================== -->
+    <changeSet id="seed-more-users" author="codex">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">
+                SELECT COUNT(*) FROM kullanicilar WHERE kullanici_adi = 'elif.acar'
+            </sqlCheck>
+        </preConditions>
+
+        <insert tableName="kullanicilar">
+            <column name="kullanici_adi" value="elif.acar"/>
+            <column name="email" value="elif.acar@sikayet.local"/>
+            <column name="sifre_hash" value="{noop}elif123"/>
+            <column name="ad" value="Elif"/>
+            <column name="soyad" value="Acar"/>
+            <column name="created_at" valueDate="2026-04-04T00:00:00"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+
+        <insert tableName="kullanicilar">
+            <column name="kullanici_adi" value="can.tekin"/>
+            <column name="email" value="can.tekin@sikayet.local"/>
+            <column name="sifre_hash" value="{noop}can123"/>
+            <column name="ad" value="Can"/>
+            <column name="soyad" value="Tekin"/>
+            <column name="created_at" valueDate="2026-04-04T00:00:00"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+
+        <insert tableName="kullanicilar">
+            <column name="kullanici_adi" value="gul.kose"/>
+            <column name="email" value="gul.kose@sikayet.local"/>
+            <column name="sifre_hash" value="{noop}gul123"/>
+            <column name="ad" value="Gul"/>
+            <column name="soyad" value="Kose"/>
+            <column name="created_at" valueDate="2026-04-04T00:00:00"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+
+        <insert tableName="kullanicilar">
+            <column name="kullanici_adi" value="ayse.demir"/>
+            <column name="email" value="ayse.demir@sikayet.local"/>
+            <column name="sifre_hash" value="{noop}ayse123"/>
+            <column name="ad" value="Ayse"/>
+            <column name="soyad" value="Demir"/>
+            <column name="created_at" valueDate="2026-04-04T00:00:00"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+
+        <insert tableName="kullanicilar">
+            <column name="kullanici_adi" value="mert.yalcin"/>
+            <column name="email" value="mert.yalcin@sikayet.local"/>
+            <column name="sifre_hash" value="{noop}mert123"/>
+            <column name="ad" value="Mert"/>
+            <column name="soyad" value="Yalcin"/>
+            <column name="created_at" valueDate="2026-04-04T00:00:00"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+
+        <insert tableName="kullanicilar">
+            <column name="kullanici_adi" value="selin.oz"/>
+            <column name="email" value="selin.oz@sikayet.local"/>
+            <column name="sifre_hash" value="{noop}selin123"/>
+            <column name="ad" value="Selin"/>
+            <column name="soyad" value="Oz"/>
+            <column name="created_at" valueDate="2026-04-04T00:00:00"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+
+        <insert tableName="kullanicilar">
+            <column name="kullanici_adi" value="fatih.kara"/>
+            <column name="email" value="fatih.kara@sikayet.local"/>
+            <column name="sifre_hash" value="{noop}fatih123"/>
+            <column name="ad" value="Fatih"/>
+            <column name="soyad" value="Kara"/>
+            <column name="created_at" valueDate="2026-04-04T00:00:00"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+
+        <insert tableName="kullanicilar">
+            <column name="kullanici_adi" value="zeynep.akbas"/>
+            <column name="email" value="zeynep.akbas@sikayet.local"/>
+            <column name="sifre_hash" value="{noop}zeynep123"/>
+            <column name="ad" value="Zeynep"/>
+            <column name="soyad" value="Akbas"/>
+            <column name="created_at" valueDate="2026-04-04T00:00:00"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+
+        <insert tableName="kullanicilar">
+            <column name="kullanici_adi" value="burak.yilmaz"/>
+            <column name="email" value="burak.yilmaz@sikayet.local"/>
+            <column name="sifre_hash" value="{noop}burak123"/>
+            <column name="ad" value="Burak"/>
+            <column name="soyad" value="Yilmaz"/>
+            <column name="created_at" valueDate="2026-04-04T00:00:00"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+
+        <insert tableName="kullanicilar">
+            <column name="kullanici_adi" value="nese.aydin"/>
+            <column name="email" value="nese.aydin@sikayet.local"/>
+            <column name="sifre_hash" value="{noop}nese123"/>
+            <column name="ad" value="Nese"/>
+            <column name="soyad" value="Aydin"/>
+            <column name="created_at" valueDate="2026-04-04T00:00:00"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+
+        <insert tableName="kullanicilar">
+            <column name="kullanici_adi" value="ozgur.ilhan"/>
+            <column name="email" value="ozgur.ilhan@sikayet.local"/>
+            <column name="sifre_hash" value="{noop}ozgur123"/>
+            <column name="ad" value="Ozgur"/>
+            <column name="soyad" value="Ilhan"/>
+            <column name="created_at" valueDate="2026-04-04T00:00:00"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+    </changeSet>
+
+    <!-- ===================== KISILER ===================== -->
+    <changeSet id="seed-kisiler" author="codex">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">
+                SELECT COUNT(*) FROM kisiler WHERE email = 'ahmet.kartal@example.com'
+            </sqlCheck>
+        </preConditions>
+
+        <insert tableName="kisiler">
+            <column name="ad" value="Ahmet"/>
+            <column name="soyad" value="Kartal"/>
+            <column name="telefon" value="0532 111 22 33"/>
+            <column name="email" value="ahmet.kartal@example.com"/>
+            <column name="created_at" valueDate="2026-04-04T00:00:00"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+
+        <insert tableName="kisiler">
+            <column name="ad" value="Ayse"/>
+            <column name="soyad" value="Demir"/>
+            <column name="telefon" value="0555 444 55 66"/>
+            <column name="email" value="ayse.demir@example.com"/>
+            <column name="created_at" valueDate="2026-04-04T00:00:00"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+
+        <insert tableName="kisiler">
+            <column name="ad" value="Mert"/>
+            <column name="soyad" value="Yalcin"/>
+            <column name="telefon" value="0555 777 88 99"/>
+            <column name="email" value="mert.yalcin@example.com"/>
+            <column name="created_at" valueDate="2026-04-04T00:00:00"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+
+        <insert tableName="kisiler">
+            <column name="ad" value="Selin"/>
+            <column name="soyad" value="Oz"/>
+            <column name="telefon" value="0544 222 33 44"/>
+            <column name="email" value="selin.oz@example.com"/>
+            <column name="created_at" valueDate="2026-04-04T00:00:00"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+
+        <insert tableName="kisiler">
+            <column name="ad" value="Fatih"/>
+            <column name="soyad" value="Kara"/>
+            <column name="telefon" value="0533 555 66 77"/>
+            <column name="email" value="fatih.kara@example.com"/>
+            <column name="created_at" valueDate="2026-04-04T00:00:00"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+
+        <insert tableName="kisiler">
+            <column name="ad" value="Zeynep"/>
+            <column name="soyad" value="Akbas"/>
+            <column name="telefon" value="0531 888 99 00"/>
+            <column name="email" value="zeynep.akbas@example.com"/>
+            <column name="created_at" valueDate="2026-04-04T00:00:00"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+
+        <insert tableName="kisiler">
+            <column name="ad" value="Burak"/>
+            <column name="soyad" value="Yilmaz"/>
+            <column name="telefon" value="0539 111 22 33"/>
+            <column name="email" value="burak.yilmaz@example.com"/>
+            <column name="created_at" valueDate="2026-04-04T00:00:00"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+
+        <insert tableName="kisiler">
+            <column name="ad" value="Nese"/>
+            <column name="soyad" value="Aydin"/>
+            <column name="telefon" value="0542 444 55 66"/>
+            <column name="email" value="nese.aydin@example.com"/>
+            <column name="created_at" valueDate="2026-04-04T00:00:00"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+
+        <insert tableName="kisiler">
+            <column name="ad" value="Ozgur"/>
+            <column name="soyad" value="Ilhan"/>
+            <column name="telefon" value="0545 777 88 99"/>
+            <column name="email" value="ozgur.ilhan@example.com"/>
+            <column name="created_at" valueDate="2026-04-04T00:00:00"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+
+        <insert tableName="kisiler">
+            <column name="ad" value="Elif"/>
+            <column name="soyad" value="Acar"/>
+            <column name="telefon" value="0540 222 33 44"/>
+            <column name="email" value="elif.acar@example.com"/>
+            <column name="created_at" valueDate="2026-04-04T00:00:00"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+    </changeSet>
+
+    <!-- ===================== SIKAYETLER ===================== -->
+    <changeSet id="seed-sikayetler" author="codex">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">
+                SELECT COUNT(*) FROM sikayetler WHERE sikayet_no = 'SY-2026-1001'
+            </sqlCheck>
+        </preConditions>
+
+        <sql splitStatements="true" stripComments="true">
+            INSERT INTO sikayetler (sikayet_no, sikayet_turu_id, konu, aciklama, sikayet_durumu_id, kisi_id, oncelik, basvuru_tarihi, created_at, updated_at, active)
+            VALUES ('SY-2026-1001', (SELECT id FROM sikayet_turleri WHERE kod = 'HIZMET' LIMIT 1), 'Gec teslim edilen kargo', 'Siparis edilen kargo gecikme ile teslim edilmistir. Urun 5 gun gecikmeyle geldi.', (SELECT id FROM sikayet_durumlari WHERE kod = 'INCELEMEDE' LIMIT 1), (SELECT id FROM kisiler WHERE email = 'ahmet.kartal@example.com' LIMIT 1), 'YUKSEK', '2026-04-05 08:30:00', '2026-04-05 08:30:00', '2026-04-05 10:15:00', true);
+
+            INSERT INTO sikayetler (sikayet_no, sikayet_turu_id, konu, aciklama, sikayet_durumu_id, kisi_id, oncelik, basvuru_tarihi, created_at, updated_at, active)
+            VALUES ('SY-2026-1002', (SELECT id FROM sikayet_turleri WHERE kod = 'PERSONEL' LIMIT 1), 'Personel davranis bildirimi', 'Musteri hizmetleri temsilcisi kufurlu ifadeler kullanmistir.', (SELECT id FROM sikayet_durumlari WHERE kod = 'SONUCLANDI' LIMIT 1), (SELECT id FROM kisiler WHERE email = 'ayse.demir@example.com' LIMIT 1), 'DUSUK', '2026-04-04 14:20:00', '2026-04-04 14:20:00', '2026-04-04 15:45:00', true);
+
+            INSERT INTO sikayetler (sikayet_no, sikayet_turu_id, konu, aciklama, sikayet_durumu_id, kisi_id, oncelik, basvuru_tarihi, created_at, updated_at, active)
+            VALUES ('SY-2026-1003', (SELECT id FROM sikayet_turleri WHERE kod = 'HIZMET' LIMIT 1), 'Eksik fatura bilgisi', 'Aldigim faturada musteri bilgileri yanlis girilmistir.', (SELECT id FROM sikayet_durumlari WHERE kod = 'ATANDI' LIMIT 1), (SELECT id FROM kisiler WHERE email = 'mert.yalcin@example.com' LIMIT 1), 'ORTA', '2026-04-05 09:00:00', '2026-04-05 09:00:00', '2026-04-05 11:30:00', true);
+
+            INSERT INTO sikayetler (sikayet_no, sikayet_turu_id, konu, aciklama, sikayet_durumu_id, kisi_id, oncelik, basvuru_tarihi, created_at, updated_at, active)
+            VALUES ('SY-2026-1004', (SELECT id FROM sikayet_turleri WHERE kod = 'HIZMET' LIMIT 1), 'Kalitesiz urun teslimi', 'Siparis edilen urun kaliteli degil ve kullanilmaz durumdadir.', (SELECT id FROM sikayet_durumlari WHERE kod = 'YENI' LIMIT 1), (SELECT id FROM kisiler WHERE email = 'selin.oz@example.com' LIMIT 1), 'YUKSEK', '2026-04-05 11:45:00', '2026-04-05 11:45:00', '2026-04-05 11:45:00', true);
+
+            INSERT INTO sikayetler (sikayet_no, sikayet_turu_id, konu, aciklama, sikayet_durumu_id, kisi_id, oncelik, basvuru_tarihi, created_at, updated_at, active)
+            VALUES ('SY-2026-1005', (SELECT id FROM sikayet_turleri WHERE kod = 'HIZMET' LIMIT 1), 'Banka calisani uygunsuz davranisi', 'Banka sube muduru musteri ile ilgisiz ve uygunsuz davranmistir.', (SELECT id FROM sikayet_durumlari WHERE kod = 'EK_BILGI_BEKLENIYOR' LIMIT 1), (SELECT id FROM kisiler WHERE email = 'fatih.kara@example.com' LIMIT 1), 'ORTA', '2026-04-04 16:00:00', '2026-04-04 16:00:00', '2026-04-05 09:20:00', true);
+
+            INSERT INTO sikayetler (sikayet_no, sikayet_turu_id, konu, aciklama, sikayet_durumu_id, kisi_id, oncelik, basvuru_tarihi, created_at, updated_at, active)
+            VALUES ('SY-2026-1006', (SELECT id FROM sikayet_turleri WHERE kod = 'PERSONEL' LIMIT 1), 'Kaba tutum ve ifade', 'Cagri merkezi calisani musteri ile kaba ve saygisiz ifadeler kullanmistir.', (SELECT id FROM sikayet_durumlari WHERE kod = 'INCELEMEDE' LIMIT 1), (SELECT id FROM kisiler WHERE email = 'zeynep.akbas@example.com' LIMIT 1), 'DUSUK', '2026-04-05 07:30:00', '2026-04-05 07:30:00', '2026-04-05 10:00:00', true);
+
+            INSERT INTO sikayetler (sikayet_no, sikayet_turu_id, konu, aciklama, sikayet_durumu_id, kisi_id, oncelik, basvuru_tarihi, created_at, updated_at, active)
+            VALUES ('SY-2026-1007', (SELECT id FROM sikayet_turleri WHERE kod = 'HIZMET' LIMIT 1), 'Faturalama sistemi hatasi', 'Musteriye cift fatura kesilmistir. Fazla odenen tutarin iadesi talep edilmektedir.', (SELECT id FROM sikayet_durumlari WHERE kod = 'ATANDI' LIMIT 1), (SELECT id FROM kisiler WHERE email = 'burak.yilmaz@example.com' LIMIT 1), 'YUKSEK', '2026-04-04 13:15:00', '2026-04-04 13:15:00', '2026-04-05 08:45:00', true);
+
+            INSERT INTO sikayetler (sikayet_no, sikayet_turu_id, konu, aciklama, sikayet_durumu_id, kisi_id, oncelik, basvuru_tarihi, created_at, updated_at, active)
+            VALUES ('SY-2026-1008', (SELECT id FROM sikayet_turleri WHERE kod = 'HIZMET' LIMIT 1), 'Urunun iade edilememe sorunu', 'Ayipli urun iade edilmek istenmesine ragmen surec ilerletilmemistir.', (SELECT id FROM sikayet_durumlari WHERE kod = 'INCELEMEDE' LIMIT 1), (SELECT id FROM kisiler WHERE email = 'nese.aydin@example.com' LIMIT 1), 'ORTA', '2026-04-05 10:30:00', '2026-04-05 10:30:00', '2026-04-05 12:00:00', true);
+
+            INSERT INTO sikayetler (sikayet_no, sikayet_turu_id, konu, aciklama, sikayet_durumu_id, kisi_id, oncelik, basvuru_tarihi, created_at, updated_at, active)
+            VALUES ('SY-2026-1009', (SELECT id FROM sikayet_turleri WHERE kod = 'PERSONEL' LIMIT 1), 'Adil olmayan muamele', 'Bazi calisanlara farkli davranildigi ve ayrimcilik yapildigi iddia edilmektedir.', (SELECT id FROM sikayet_durumlari WHERE kod = 'YENI' LIMIT 1), (SELECT id FROM kisiler WHERE email = 'ozgur.ilhan@example.com' LIMIT 1), 'ORTA', '2026-04-05 12:30:00', '2026-04-05 12:30:00', '2026-04-05 12:30:00', true);
+
+            INSERT INTO sikayetler (sikayet_no, sikayet_turu_id, konu, aciklama, sikayet_durumu_id, kisi_id, oncelik, basvuru_tarihi, created_at, updated_at, active)
+            VALUES ('SY-2026-1010', (SELECT id FROM sikayet_turleri WHERE kod = 'HIZMET' LIMIT 1), 'Siparis hakkinda geri donus alinamadi', 'Urun hakkinda bilgi talep edilmesine ragmen uzun sure cevap verilmemistir.', (SELECT id FROM sikayet_durumlari WHERE kod = 'KAPATILDI' LIMIT 1), (SELECT id FROM kisiler WHERE email = 'elif.acar@example.com' LIMIT 1), 'DUSUK', '2026-04-03 15:00:00', '2026-04-03 15:00:00', '2026-04-05 09:00:00', true);
+        </sql>
     </changeSet>
 
 </databaseChangeLog>

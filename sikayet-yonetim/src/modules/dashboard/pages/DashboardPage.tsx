@@ -1,4 +1,8 @@
+import { useNavigate } from 'react-router-dom'
+
 export function DashboardPage() {
+  const navigate = useNavigate()
+
   return (
     <>
       <section className="page-header">
@@ -7,7 +11,9 @@ export function DashboardPage() {
           <h2 className="page-title">Operasyon Ozeti</h2>
           <div className="muted">Atama, durum ve sonuc akislarini anlik izleyin.</div>
         </div>
-        <button className="button-primary" type="button">Yeni sikayet</button>
+        <button className="button-primary" type="button" onClick={() => navigate('/complaints')}>
+          Yeni sikayet
+        </button>
       </section>
 
       <section className="stats">
