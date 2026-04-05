@@ -27,6 +27,12 @@ public class SikayetSonucu extends BaseEntity {
     @Column(name = "sonuc_metin", nullable = false, columnDefinition = "TEXT")
     private String sonucMetin;
 
+    @Column(name = "sonuc_tipi", length = 50)
+    private String sonucTipi;
+
+    @Column(name = "uygulancak_islem", columnDefinition = "TEXT")
+    private String uygulanacakIslem;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "sonuclandiran_kullanici_id")
     private Kullanici sonuclandiranKullanici;

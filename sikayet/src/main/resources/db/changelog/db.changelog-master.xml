@@ -7,5 +7,6 @@
 
     <include file="db/changelog/changes/001-core.xml"/>
     <include file="db/changelog/changes/002-complaint-workflow.xml"/>
+    <include file="db/changelog/changes/003-complaint-structure-enhancements.xml"/>
     <include file="db/changelog/changes/100-seed.xml"/>
 </databaseChangeLog>

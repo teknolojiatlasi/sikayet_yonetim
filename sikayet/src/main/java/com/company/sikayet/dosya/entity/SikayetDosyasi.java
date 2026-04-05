@@ -37,6 +37,9 @@ public class SikayetDosyasi extends BaseEntity {
     @Column(name = "dosya_boyutu", nullable = false)
     private long dosyaBoyutu;
 
+    @Column(name = "aciklama", length = 255)
+    private String aciklama;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "yukleyen_kullanici_id")
     private Kullanici yukleyenKullanici;

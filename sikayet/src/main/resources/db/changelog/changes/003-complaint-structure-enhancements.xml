@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.23.xsd">
+
+    <changeSet id="012-complaint-structure-enhancements" author="copilot">
+        <addColumn tableName="kullanicilar">
+            <column name="telefon" type="VARCHAR(20)"/>
+            <column name="son_giris_tarihi" type="DATETIME"/>
+        </addColumn>
+
+        <addColumn tableName="kisiler">
+            <column name="tc_kimlik_no" type="VARCHAR(11)"/>
+            <column name="adres" type="TEXT"/>
+            <column name="dogum_tarihi" type="DATE"/>
+            <column name="cinsiyet" type="VARCHAR(20)"/>
+            <column name="kisi_tipi" type="VARCHAR(30)" defaultValue="GERCEK"><constraints nullable="false"/></column>
+            <column name="firma_adi" type="VARCHAR(200)"/>
+            <column name="vergi_no" type="VARCHAR(50)"/>
+        </addColumn>
+
+        <addColumn tableName="sikayet_turleri">
+            <column name="parent_id" type="BIGINT"/>
+            <column name="sira_no" type="INT" defaultValueNumeric="0"><constraints nullable="false"/></column>
+        </addColumn>
+        <addForeignKeyConstraint baseTableName="sikayet_turleri" baseColumnNames="parent_id" referencedTableName="sikayet_turleri" referencedColumnNames="id" constraintName="fk_sikayet_turleri_parent"/>
+
+        <addColumn tableName="sikayet_durumlari">
+            <column name="aciklama" type="VARCHAR(255)"/>
+            <column name="renk_kodu" type="VARCHAR(20)"/>
+            <column name="sira_no" type="INT" defaultValueNumeric="0"><constraints nullable="false"/></column>
+            <column name="sistem_mi" type="BIT" defaultValueBoolean="false"><constraints nullable="false"/></column>
+        </addColumn>
+
+        <addColumn tableName="sikayetler">
+            <column name="olay_tarihi" type="DATETIME"/>
+            <column name="basvuru_tarihi" type="DATETIME" defaultValueComputed="CURRENT_TIMESTAMP"/>
+            <column name="gizli_mi" type="BIT" defaultValueBoolean="false"><constraints nullable="false"/></column>
+            <column name="olusturan_kullanici_id" type="BIGINT"/>
+            <column name="guncelleyen_kullanici_id" type="BIGINT"/>
+        </addColumn>
+        <addForeignKeyConstraint baseTableName="sikayetler" baseColumnNames="olusturan_kullanici_id" referencedTableName="kullanicilar" referencedColumnNames="id" constraintName="fk_sikayetler_olusturan"/>
+        <addForeignKeyConstraint baseTableName="sikayetler" baseColumnNames="guncelleyen_kullanici_id" referencedTableName="kullanicilar" referencedColumnNames="id" constraintName="fk_sikayetler_guncelleyen"/>
+        <createIndex tableName="sikayetler" indexName="idx_sikayetler_kisi_id"><column name="kisi_id"/></createIndex>
+        <createIndex tableName="sikayetler" indexName="idx_sikayetler_tur_id"><column name="sikayet_turu_id"/></createIndex>
+        <createIndex tableName="sikayetler" indexName="idx_sikayetler_durum_id"><column name="sikayet_durumu_id"/></createIndex>
+        <createIndex tableName="sikayetler" indexName="idx_sikayetler_basvuru_tarihi"><column name="basvuru_tarihi"/></createIndex>
+
+        <addColumn tableName="sikayet_dosyalari">
+            <column name="aciklama" type="VARCHAR(255)"/>
+        </addColumn>
+
+        <addColumn tableName="sikayet_atamalari">
+            <column name="atayan_kullanici_id" type="BIGINT"/>
+            <column name="bitis_tarihi" type="DATETIME"/>
+            <column name="aciklama" type="VARCHAR(255)"/>
+        </addColumn>
+        <addForeignKeyConstraint baseTableName="sikayet_atamalari" baseColumnNames="atayan_kullanici_id" referencedTableName="kullanicilar" referencedColumnNames="id" constraintName="fk_sikayet_atamalari_atayan"/>
+        <createIndex tableName="sikayet_atamalari" indexName="idx_sikayet_atamalari_sikayet_id"><column name="sikayet_id"/></createIndex>
+
+        <createIndex tableName="sikayet_durum_gecmisi" indexName="idx_sikayet_durum_gecmisi_sikayet_id"><column name="sikayet_id"/></createIndex>
+
+        <addColumn tableName="sikayet_loglari">
+            <column name="ip_adresi" type="VARCHAR(50)"/>
+            <column name="user_agent" type="TEXT"/>
+        </addColumn>
+        <createIndex tableName="sikayet_loglari" indexName="idx_sikayet_loglari_sikayet_id"><column name="sikayet_id"/></createIndex>
+
+        <addColumn tableName="sikayet_sonuclari">
+            <column name="sonuc_tipi" type="VARCHAR(50)"/>
+            <column name="uygulancak_islem" type="TEXT"/>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>

@@ -5,6 +5,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 import lombok.Getter;
@@ -33,4 +34,10 @@ public class Kullanici extends BaseEntity {
 
     @OneToMany(mappedBy = "kullanici")
     private Set<KullaniciRol> kullaniciRolleri = new HashSet<>();
+
+    @Column(name = "telefon", length = 20)
+    private String telefon;
+
+    @Column(name = "son_giris_tarihi")
+    private LocalDateTime sonGirisTarihi;
 }

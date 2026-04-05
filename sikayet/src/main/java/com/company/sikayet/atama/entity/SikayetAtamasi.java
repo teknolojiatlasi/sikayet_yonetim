@@ -27,8 +27,18 @@ public class SikayetAtamasi extends BaseEntity {
     @JoinColumn(name = "atanan_kullanici_id", nullable = false)
     private Kullanici atananKullanici;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "atayan_kullanici_id")
+    private Kullanici atayanKullanici;
+
     @Column(name = "atama_tarihi", nullable = false)
     private LocalDateTime atamaTarihi;
+
+    @Column(name = "bitis_tarihi")
+    private LocalDateTime bitisTarihi;
+
+    @Column(name = "aciklama", length = 255)
+    private String aciklama;
 
     @Column(name = "aktif", nullable = false)
     private boolean aktif = true;
