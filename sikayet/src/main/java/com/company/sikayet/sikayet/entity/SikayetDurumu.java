@@ -21,4 +21,16 @@ public class SikayetDurumu extends BaseEntity {
 
     @Column(name = "final_durum", nullable = false)
     private boolean finalDurum;
+
+    @Column(name = "aciklama", length = 255)
+    private String aciklama;
+
+    @Column(name = "renk_kodu", length = 20)
+    private String renkKodu;
+
+    @Column(name = "sira_no", nullable = false)
+    private Integer siraNo = 0;
+
+    @Column(name = "sistem_mi", nullable = false)
+    private boolean sistemMi = false;
 }

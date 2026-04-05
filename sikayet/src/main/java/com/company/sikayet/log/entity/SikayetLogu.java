@@ -33,6 +33,12 @@ public class SikayetLogu extends BaseEntity {
     @JoinColumn(name = "kullanici_id")
     private Kullanici kullanici;
 
+    @Column(name = "ip_adresi", length = 50)
+    private String ipAdresi;
+
+    @Column(name = "user_agent", columnDefinition = "TEXT")
+    private String userAgent;
+
     @Column(name = "islem_tarihi", nullable = false)
     private LocalDateTime islemTarihi;
 }
